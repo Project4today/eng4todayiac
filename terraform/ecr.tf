@@ -1,12 +1,15 @@
+# ECR Repository
 resource "aws_ecr_repository" "main" {
-  name                 = var.project_name
+  name = var.project_name # This will resolve to "eng4today"
+
+  force_delete         = true
   image_tag_mutability = "MUTABLE"
 
   image_scanning_configuration {
-    scan_on_push = false
+    scan_on_push = true
   }
-}
 
-output "ecr_repository_url" {
-  value = aws_ecr_repository.main.repository_url
+  tags = {
+    Name = var.project_name
+  }
 }

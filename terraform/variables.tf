@@ -7,13 +7,13 @@ variable "aws_region" {
 variable "project_name" {
   description = "Project name to be used for naming resources"
   type        = string
-  default     = "eng4todaycore"
+  default     = "eng4today"
 }
 
 variable "environment" {
-  description = "Environment (dev, prod, etc.)"
+  description = "The deployment environment (e.g., dev, staging, prod)"
   type        = string
-  default     = "prod"
+  default     = "dev"
 }
 
 variable "container_port" {
@@ -31,5 +31,11 @@ variable "db_password" {
 variable "db_username" {
   description = "Username for the RDS database"
   type        = string
-  default     = "postgres"
+  sensitive   = true
+}
+
+variable "image_tag" {
+  description = "The tag of the image to deploy"
+  type        = string
+  default     = "latest"
 }
